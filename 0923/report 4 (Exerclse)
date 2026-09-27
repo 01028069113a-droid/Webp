@@ -1,0 +1,620 @@
+이론문제 챕터 4
+1. CSS3 스타일 시트 작성이 잘못된 것을 바르게 고쳐라.
+(1) body { background-color = mistyrose; }
+정답: body { background-color : mistyrose; }
+
+(2) <h3> { color : purple /* purple은 보라색 */ }
+정답: h3 { color : purple; /* purple은 보라색 */ }
+
+(3) HR { height : 5px; background_color : grey }
+정답: HR { height : 5px; background-color : grey; }
+
+(4) span { color : blue, font-size : 20px } // <span> 태그에 적용
+정답: span { color : blue; font-size : 20px; } /* <span> 태그에 적용 */
+
+
+2. CSS3 스타일 시트 작성이 잘못된 것을 바르게 고쳐라.
+
+(1) div ( font-size : 30px; )
+정답: div { font-size : 30px; }
+
+(2) <p style="color:blue, font-size:30px">안녕하세요</p>
+정답: <p style="color:blue; font-size:30px">안녕하세요</p>
+
+(3) p { text-indent : 5 }
+정답: p { text-indent : 5px; } (또나 5em, 5% 등 단위 표시)
+
+(4) p { color : 'blue' }
+정답: p { color : blue; }
+
+
+3. CSS3의 색 표현법이 틀린 것은?
+
+① div { color : rgb(55, 325, 128); }
+② div { color : blue; }
+③ div { color : #7F3B55; }
+④ div { color : #000000; }
+정답: ①
+RGB 값의 범위는 0 ~ 255까지입니다. 325는 범위를 초과하여 올바르지 않습니다.
+
+
+4. 박스 모델에 관해 틀린 설명은?
+① 모든 HTML 태그는 박스 모델의 적용을 받는다.   
+② 여백(margin) 색은 지정할 수 없고, 부모 태그의 색이 비춰 출력된다.   
+③ 패딩(padding) 색은 태그의 배경색과 같다.   
+④ 테두리는 실선으로만 가능하다.   
+정답: ④
+테두리 스타일(border-style)은 실선(solid) 외에도 점선(dotted), 파선(dashed), 이중선(double) 등 다양한 스타일을 지정할 수 있습니다.
+
+
+5. 다음 중 셀렉터로 적합하지 않은 것은?
+① img   
+② img:hover   
+③ ##div   
+④ ul li   
+정답: ③
+id 셀렉터는 샵 기호 1개(#)만 사용합니다 (#div). ##처럼 기호를 중복해 사용하지 않습니다.
+
+
+6. 다음 CSS3에서 사용하는 단위 중 상대적인 크기는?   
+① em   
+② px   
+③ deg   
+④ pc   
+정답: ①
+em은 상위 요소의 폰트 크기 비율에 따라 달라지는 상대 단위입니다. (px, pc는 절대 단위, deg는 각도 단위입니다.)
+
+  
+7. 다음 왼쪽 HTML 페이지의 CSS3 스타일 시트를 파일에 저장하고 @import를 이용하여 수정하라.
+
+[원본 HTML 소스]
+
+<!DOCTYPE html>
+<html>
+<head><title>CSS3</title>
+<style>
+  p {
+    color : blue;
+    text-align : center;
+  }
+</style>
+</head>
+<body>
+<p>test</p>
+</body>
+</html>
+
+정답
+1) style.css 파일
+p {
+  color: blue;
+  text-align: center;
+}
+
+2) 수정된 HTML 파일
+<!DOCTYPE html>
+<html>
+<head>
+  <title>CSS3</title>
+  <style>
+    @import url("style.css");
+  </style>
+</head>
+<body>
+  <p>test</p>
+</body>
+</html>
+
+
+8. 다음 CSS3와 HTML 소스가 있다.
+/* a.css */
+body {
+  background-color : yellow;
+}
+p {
+  text-align : center;
+}
+
+HTML
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>CSS3</title>
+  <link type="text/css" rel="stylesheet" href="a.css">
+  <style>
+    p { color : blue; text-align : right; font-size : 2em; }
+  </style>
+</head>
+<body>
+  <p style="color:red; font-size:3em">test <span>code</span></p>
+  <p>test <span style="color:green">code</span></p>
+</body>
+</html>
+
+(1) 첫 번째 <p> 태그인 다음 태그에 적용되는 CSS3 스타일 시트를 쓰라.
+<p style="color:red; font-size:3em">test <span>code</span></p>
+
+정답: 
+CSS
+color: red;
+font-size: 3em;
+text-align: right;
+
+(2) 두 번째 <span> 태그인 다음 태그에 적용되는 CSS3 스타일 시트를 쓰라.
+<span style="color:green">code</span>
+
+정답
+css
+color: green;
+font-size: 2em;
+text-align: right;
+
+
+9. 다음 HTML 태그가 있을 때 틀린 셀렉터는?   
+<body class="all">
+  <div><p id="first">Good <span>morning</span></p></div>
+</body>
+
+① `body.all { color : blue; }`  
+② `#first { color : blue; }`  
+③ `div > span { color : blue; }`  
+④ `div p { color : blue; }`
+정답: 3
+
+풀이 및 설명
+* `div > span`은 `div` 태그의 **직계 자식(child)** 요소인 `span`만을 선택합니다.
+* 문제의 HTML 구조에서 `span`은 `p`의 자식이고 `div` 기준으로는 **자손(descendant)** 요소이므로, 자식 셀렉터 `>` 방식으로는 선택되지 않습니다. (자손 셀렉터인 `div span` 형태를 사용해야 합니다.
+
+10. 다음 HTML 태그가 있을 때 틀린 셀렉터는?
+<body id="all">
+  <div><a class="b" href="#">앵커</a></div>
+</body>
+① #all { color : blue; }`[cite: 2]  
+② .b { color : blue; }`[cite: 2]  
+③ * { color : blue; }`[cite: 2]  
+④ div.a { color : blue; }`[cite: 2]
+정답: ④
+풀이 및 설명
+div.a는 `class="a" 속성을 가진 <div>`태그를 의미합니다
+[cite: 제시된 HTML 코드에는 클래스가 a인 div 태그가 없으므로 올바르지 않은 셀렉터입니다[cite: 2]. (앵커 태그 <a>에 class="b"가 포함되어 있습니다[cite: 2].)
+
+11. 다음 링크 태그에 대해 다음에 답하라
+<a href="http://www.site.com">site</a>
+(1) 링크의 텍스트 색을 파란색으로 하고 밑줄을 없애도록 셀렉터와 스타일 시트를 작성하라
+(2) 마우스를 올리면 링크 텍스트가 기존 폰트의 2배가 되고 내리면 원래대로 돌아오도록 셀렉터와 스타일 시트를 작성하라
+(3) [www.site.com](https://www.site.com)을 방문하고 난 후 링크 색이 violet이 되도록 셀렉터와 스타일 시트를 작성하라
+
+정답:
+(1)
+css
+a {
+  color: blue;
+  text-decoration: none;
+}
+
+(2)
+CSS
+a:hover {
+  font-size: 2em; /* 또는 font-size: 200%; */
+}
+
+(3)
+CSS
+a:visited {
+  color: violet;
+}
+
+
+12. li.menu:hover { color : green; } 스타일 시트에 대해 바르게 설명한 것은?
+
+① 모든 <li class="menu"> 태그에 대해 적용된다
+② 마우스를 올리면 글자의 색이 green으로 바뀌고 마우스가 내려와도 원래색으로 돌아가지 않는다
+③ 마우스를 클릭할 때 글자의 색이 green으로 바뀌고 마우스를 놓으면 원래색으로 돌아간다
+④ 가상 셀렉터로서 모든 <li>에 적용한다
+
+정답: ①
+
+풀이 및 설명
+li.menu는 클래스명이 menu인 <li> 요소들을 선택하고, :hover 가상 클래스는 해당 요소 위에 마우스 포인터가 올라갔을 때의 스타일을 지정합니다
+② 마우스가 떨어지면 원래색으로 돌아가므로 틀렸습니다
+③ 클릭 시 동작하는 가상 클래스는 :active이므로 틀렸습니다
+④ 모든 <li>가 아닌 class="menu"를 가진 <li> 요소에만 적용되므로 틀렸습니다
+
+ 
+ 
+실습문제
+1번
+다음 HTML 소스에 태그 이름 셀렉터로 스타일 시트를 삽입하여 브라우저 출력과 같게 하라.
+
+[기본 HTML 소스]
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>태그 셀렉터 만들기</title>
+</head>
+<body>
+<h3>소연재</h3>
+<hr>
+<p>저는 체조 선수 소연재입니다. <span>음악</span>을 들으면서
+책읽기를 좋아합니다.
+<span>김치 찌개</span>와 <span>막국수</span>를 무척 좋아합니다.</p>
+</body>
+</html>
+
+정답 (완성된 HTML 소스)
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>태그 셀렉터 만들기</title>
+<style>
+  h3 {
+    text-align: right;
+  }
+  span {
+    background: violet;
+  }
+</style>
+</head>
+<body>
+<h3>소연재</h3>
+<hr>
+<p>저는 체조 선수 소연재입니다. <span>음악</span>을 들으면서
+책읽기를 좋아합니다.
+<span>김치 찌개</span>와 <span>막국수</span>를 무척 좋아합니다.</p>
+</body>
+</html>
+
+2번 문제
+다음 HTML 소스에 태그 이름 셀렉터로 스타일 시트를 삽입하여 브라우저 출력과 같게 하라.
+
+[기본 HTML 소스]
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>텍스트 꾸미기</title>
+</head>
+<body>
+<h3>텍스트와 폰트</h3>
+<hr>
+<p>AliceBlue 바탕색에 Brown 색의 "Lucida Console" 폰트로
+10px 크기이고 <span>저는 이보다 1.5배 큽니다.</span></p>
+</body>
+</html>
+
+정답 (완성된 HTML 소스)
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>텍스트 꾸미기</title>
+<style>
+  p {
+    background: aliceblue;
+    color: brown;
+    font-family: "Lucida Console";
+    font-size: 10px;
+  }
+  span {
+    font-size: 1.5em;
+  }
+</style>
+</head>
+<body>
+<h3>텍스트와 폰트</h3>
+<hr>
+<p>AliceBlue 바탕색에 Brown 색의 "Lucida Console" 폰트로
+10px 크기이고 <span>저는 이보다 1.5배 큽니다.</span></p>
+</body>
+</html>
+
+3번 문제
+다음과 같이 색 이름, 색 코드, 색을 보여주는 테이블을 작성하라.
+
+정답 (완성된 HTML 소스)
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>색 테이블 만들기</title>
+<style>
+  table {
+    border-collapse: collapse;
+  }
+  th, td {
+    border: 1px solid black;
+    padding: 4px 10px;
+  }
+  th {
+    background-color: lightgray;
+  }
+</style>
+</head>
+<body>
+<h3>색 이름과 코드</h3>
+<hr>
+<table>
+  <thead>
+    <tr>
+      <th>이름</th>
+      <th>코드</th>
+      <th>색</th>
+      <th>이름</th>
+      <th>코드</th>
+      <th>색</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Brown</td>
+      <td>#A52A2A</td>
+      <td style="background-color: #A52A2A;"></td>
+      <td>DeepSkyBlue</td>
+      <td>#00BFFF</td>
+      <td style="background-color: #00BFFF;"></td>
+    </tr>
+    <tr>
+      <td>Blueviolet</td>
+      <td>#8A2BE2</td>
+      <td style="background-color: #8A2BE2;"></td>
+      <td>Gold</td>
+      <td>#FFD700</td>
+      <td style="background-color: #FFD700;"></td>
+    </tr>
+    <tr>
+      <td>DarkOrange</td>
+      <td>#FF8C00</td>
+      <td style="background-color: #FF8C00;"></td>
+      <td>OliveDrab</td>
+      <td>#6B8E23</td>
+      <td style="background-color: #6B8E23;"></td>
+    </tr>
+  </tbody>
+</table>
+</body>
+</html>
+
+
+ 
+4번 문제
+HTML 태그를 수정하지 말고 셀렉터와 스타일 시트를 삽입하여 다음과 같이 출력되게 하라.  
+ 
+[기본 HTML 소스]
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>셀렉터 만들기</title>
+</head>
+<body class="main">
+<h3 class="headline">클래스 셀렉터</h3>
+<hr>
+<div class="help">도움말</div>
+<p class="help">!!경고 메시지</p>
+<p id="hot">뜨거운 태양</p>
+</body>
+</html>
+
+정답 (완성된 HTML 소스)
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>셀렉터 만들기</title>
+<style>
+  .main {
+    background: aliceblue;
+  }
+  .headline {
+    background: darkcyan;
+    color: white;
+    text-align: center;
+  }
+  .help {
+    color: magenta;
+  }
+  #hot {
+    background: orange;
+    color: chocolate;
+    text-decoration: underline;
+  }
+</style>
+</head>
+<body class="main">
+<h3 class="headline">클래스 셀렉터</h3>
+<hr>
+<div class="help">도움말</div>
+<p class="help">!!경고 메시지</p>
+<p id="hot">뜨거운 태양</p>
+</body>
+</html>
+
+5번 문제
+HTML 태그를 수정하지 말고 셀렉터와 스타일 시트를 삽입하여 다음과 같이 출력되게 하라.  
+
+[기본 HTML 소스]
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>셀렉터</title>
+</head>
+<body class="main">
+<h3>얼굴</h3>
+<hr>
+<div id="center"><strong>박인희</strong></div>
+<div class="indent">
+<p><em>길</em>을 걷고 산들 무엇하리
+<strong>꽃</strong>이 내가 아니듯 내가 <strong>꽃</strong>이 될 수 없는 지금…</p>
+</div>
+</body>
+</html>
+
+정답 (완성된 HTML 소스)
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>셀렉터</title>
+<style>
+  .main {
+    background: aliceblue;
+  }
+  h3 {
+    color: darkcyan;
+  }
+  #center {
+    text-align: center;
+  }
+  #center strong {
+    color: brown;
+    background: powderblue;
+  }
+  .indent {
+    margin-left: 40px;
+  }
+  .indent p {
+    color: darkblue;
+  }
+  .indent em {
+    color: red;
+    font-style: normal;
+  }
+  .indent strong {
+    color: chocolate;
+    font-weight: normal;
+  }
+</style>
+</head>
+<body class="main">
+<h3>얼굴</h3>
+<hr>
+<div id="center"><strong>박인희</strong></div>
+<div class="indent">
+<p><em>길</em>을 걷고 산들 무엇하리
+<strong>꽃</strong>이 내가 아니듯 내가 <strong>꽃</strong>이 될 수 없는 지금…</p>
+</div>
+</body>
+</html>
+
+
+6번 문제
+아래와 같이 밑줄이 없는 초록색 링크를 만들고 마우스가 올라가면 밑줄과 더불어 violet 색으로 바뀌도록 HTML 페이지를 작성하라.
+
+정답 (완성된 HTML 소스)
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>링크 꾸미기</title>
+<style>
+  a {
+    color: green;
+    text-decoration: none;
+  }
+  a:hover {
+    color: violet;
+    text-decoration: underline;
+  }
+</style>
+</head>
+<body>
+<h3>링크 꾸미기</h3>
+<hr>
+<p>초록색에 밑줄없는 링크. 마우스를 올리면 밑줄과 violet 색으로 변경</p>
+<ul>
+  <li><a href="#">네이버 사이트</a></li>
+  <li><a href="#">구글 사이트</a></li>
+</ul>
+</body>
+</html>
+
+7번 문제
+<div> 태그를 이용하여 카드의 뒷면을 출력하고, 마우스를 올리면 카드의 앞면이 보이게 HTML 페이지를 작성하라.
+
+정답 (완성된 HTML 소스)
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>:hover 활용</title>
+<style>
+  div.card {
+    width: 150px;
+    height: 200px;
+    background-image: url("card_back.png"); /* 카드 뒷면 이미지 경로 */
+    background-size: cover;
+  }
+  div.card:hover {
+    background-image: url("card_front.png"); /* 카드 앞면 이미지 경로 */
+  }
+</style>
+</head>
+<body>
+<h3>:hover 활용</h3>
+<hr>
+<p>마우스를 올리면 카드의 앞면이 보인다.</p>
+<div class="card"></div>
+</body>
+</html>
+
+8번 문제
+<img> 태그로 이미지를 출력하고, 액자 모양의 이미지 테두리를 만들어라. 테두리의 두께는 15px, 패딩은 5px로 하여 테두리와 이미지 사이에 공간이 있게 하라.
+
+정답 (완성된 HTML 소스)
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>이미지 테두리 만들기</title>
+<style>
+  img {
+    padding: 5px;
+    border: 15px solid lightskyblue; /* 액자 모양 테두리 스타일 지정 */
+  }
+</style>
+</head>
+<body>
+<h3>이미지 테두리 만들기</h3>
+<hr>
+<img src="tree.jpg" width="200" height="200" alt="풍경 이미지">
+</body>
+</html>
+
+
+ 9번 문제
+다음 페이지를 작성하라. Most Visited Pages 텍스트를 text-shadow로 꾸미고, 이미지에 마우스를 올리면 box-shadow를 이용하여 박스에 그림자가 보이게 하라.
+
+정답 (완성된 HTML 소스)
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>text-shadow와 box-shadow</title>
+<style>
+  h2 {
+    color: orange;
+    text-shadow: 3px 3px 5px gray;
+  }
+  img {
+    width: 150px;
+    height: 100px;
+    margin: 5px;
+    border: 1px solid lightgray;
+  }
+  img:hover {
+    box-shadow: 5px 5px 10px gray;
+  }
+</style>
+</head>
+<body>
+<h2>Most Visited Pages</h2>
+<hr>
+<img src="site1.png" alt="네이버">
+<img src="site2.png" alt="조선일보">
+<img src="site3.png" alt="아마존">
+</body>
+</html>
