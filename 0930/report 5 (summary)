@@ -1,0 +1,36 @@
+# 요약 05
+
+Q. 박스의 유형은 display 프로퍼티로 지정하는데, 박스의 유형이란 무엇인가?
+A. CSS3에서는 HTML 태그가 출력되는 박스의 형태를 3가지로 구분한다. 블록 박스(`display:block`)는 양 옆에 다른 박스의 배치를 허용하지 않고, 박스의 높이와 폭 등 박스 모델의 속성 조절이 모두 가능한 유형이다. 인라인 박스(`display:inline`)는 블록 박스 내의 배치되며, 높이와 폭이 조절되지 않는다. 인라인 블록 박스(`display:inline-block`)는 앞의 두 박스의 속성을 섞은 것으로, 인라인 박스처럼 양 옆에 다른 요소가 배치 가능하지만, 블록 박스처럼 크기 조절이 가능하다.
+
+
+Q. CSS3에서 normal flow와 배치란 어떤 것인가?
+A. 브라우저는 HTML 태그가 작성된 순서대로 위에서 아래로 배치하는데 이를 normal flow라고 한다. 배치란 normal flow에 따르지 않고, HTML 태그의 위치를 CSS3로 정할 수 있다는 뜻이다.
+
+
+Q. 상대 배치란 어떤 것이며 어디에 활용할 수 있는가?
+A. 상대 배치(`position:relative`)는 normal flow에 따라 태그가 배치될 위치를 기준으로 약간 이동시켜 배치하는 것을 말하며, 메뉴 텍스트에 마우스가 올라가면 메뉴의 위치를 아래나 위로 약간 이동시켜 마우스에 반응하는 메뉴를 만들 때 이용할 수 있다.
+
+
+Q. 고정 배치란 어떤 것이며 어디에 활용할 수 있는가?
+A. 고정 배치(`position:fixed`)는 태그를 뷰포트(브라우저의 보이는 윈도우 영역)에 항상 고정시켜, 브라우저의 크기가 변해도 윈도우의 고정 위치에 항상 보이는 광고문에 활용된다.
+
+
+Q. 카드 게임처럼 카드 이미지가 포개지도록 배치할 수 있는가?
+A. z-index 프로퍼티를 사용하면 이미지를 수직으로 쌓아 배치할 수 있다.
+
+
+Q. 자바스크립트를 사용하지 않고 태그가 움직이는 효과를 CSS3로 만들 수 있는가?
+A. CSS3로 3가지 효과를 만들 수 있다. 시간에 따라 장면을 설정하는 애니메이션과, 스타일 프로퍼티 값의 변화를 천천히 하여 변하는 효과를 만드는 전환(transition), 태그의 모양을 변형하거나 회전시키는 등 모양 변화를 만드는 변환(`transform`)이다.
+
+
+Q. 이 장에서 학습한 CSS3 프로퍼티를 간단히 정리하면?
+A. 다음 표와 같다.
+
+박스의 유형:  display:block, display:inline, display:inline-block
+박스의 배치: position:static, position:relative, position:absolute, position:fixed, float:left/right, z-index, visibility, overflow
+박스의 위치와 크기:  top, bottom, left, right, width, height
+리스트 꾸미기:  list-style-type, list-style-image, list-style-position, list-style
+애니메이션: animation-name, animation-duration, `animation-iteration-count
+전환: transition
+변환: transform
