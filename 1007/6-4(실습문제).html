@@ -1,0 +1,39 @@
+4. prompt() 함수를 이용하여 월, 화, 수, 목, 금, 토, 일 중 하나를 입력받아 월~목의 경우 '출근'을, 다른 날의 경우 '휴일'을 출력하는 자바스크립트 코드를 작성하여 웹 페이지를 완성하라.
+
+풀이 과정:
+prompt("월화수목금토일 중에서 입력하세요")를 통해 사용자로부터 요일을 입력받습니다.  
+ switch 문이나 if 조건을 사용하여 입력값이 "월", "화", "수", "목" 중 하나인 경우에는 '출근', 그 외의 입력인 경우에는 '휴일'을 출력합니다
+
+정답 코드:
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>월화수목금토일</title>
+</head>
+<body>
+<h3>월화수목금토일</h3>
+<hr>
+<script>
+    let day = prompt("월화수목금토일 중에서 입력하세요", "");
+
+    switch(day) {
+        case "월":
+        case "화":
+        case "수":
+        case "목":
+            document.write(day + "는 출근");
+            break;
+        case "금":
+        case "토":
+        case "일":
+            document.write(day + "는 휴일");
+            break;
+        default:
+            document.write("잘못 입력하셨습니다.");
+    }
+</script>
+</body>
+</html>
+
+
