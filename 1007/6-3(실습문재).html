@@ -1,0 +1,67 @@
+3. document.write()를 이용하여 문제 2에 주어진 <script> 태그에 자바스크립트 코드를 완성하여 다음과 같이 출력되게 하라.
+
+(1) 별 출력하기   
+문제 내용: *부터 *****까지 줄마다 별 개수를 1개씩 늘려가며 5줄 출력   
+풀이 과정:2중 for 문을 사용하여 외부 반복문은 행의 수(15), 내부 반복문은 별의 개수(1i)만큼 document.write("*")를 실행합니다.
+한 행의 출력이 끝나면 document.write("<br>")로 줄바꿈을 해줍니다.
+
+정답 코드:
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>document.write()</title>
+</head>
+<body>
+<script>
+    for (let i = 1; i <= 5; i++) {
+        for (let j = 0; j < i; j++) {
+            document.write("*");
+        }
+        document.write("<br>");
+    }
+</script>
+</body>
+</html>
+
+
+(2) 표 만들기   
+
+문제 내용: document.write()로 표 만들기 헤더와 $n$(0~9), $n^2$의 값을 나타내는 HTML 테이블 출력   
+풀이 과정:<h3> 태그로 제목을 출력하고, document.write()를 이용해 <table> 태그 문자열을 작성합니다.
+첫 번째 행(<tr>)에는 n과 0부터 9까지의 숫자를 <th> 또는 <td>로 출력합니다.
+두 번째 행(<tr>)에는 n²과 0부터 9까지의 제곱값($i \times i$)을 출력합니다.
+
+정답 코드:
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>document.write()로 표 만들기</title>
+</head>
+<body>
+<h3>document.write()로 표 만들기</h3>
+<hr>
+<script>
+    document.write("<table border='1'>");
+    
+    // 첫 번째 행: n과 0~9
+    document.write("<tr><th>n</th>");
+    for (let i = 0; i <= 9; i++) {
+        document.write("<td>" + i + "</td>");
+    }
+    document.write("</tr>");
+
+    // 두 번째 행: n²과 0~9의 제곱값
+    document.write("<tr><th>n<sup>2</sup></th>");
+    for (let i = 0; i <= 9; i++) {
+        document.write("<td>" + (i * i) + "</td>");
+    }
+    document.write("</tr>");
+
+    document.write("</table>");
+</script>
+</body>
+</html>
+
+
