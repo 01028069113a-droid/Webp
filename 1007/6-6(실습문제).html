@@ -1,0 +1,52 @@
+6. 브라우저 화면과 같이 출력되도록 <script> 태그 내에 함수를 작성하라.
+
+(1) big 함수 작성   문제 내용: 두 개의 문자열 형태 숫자를 매개변수로 받아 더 큰 값을 정수로 반환하는 big 함수를 작성   
+풀이 과정:문자열로 전달된 입력값 a, b를 비교하기 위해 parseInt()를 이용하여 정수로 변환합니다.
+n1 > n2이면 n1을, 그렇지 않으면 n2를 반환합니다.
+
+정답 코드:
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>1</title>
+</head>
+<body>
+<script>
+function big(a, b) {
+    let n1 = parseInt(a);
+    let n2 = parseInt(b);
+    if (n1 > n2) return n1;
+    else return n2;
+}
+</script>
+<script>
+    let b = big("625", "555");
+    document.write("큰수=" + b);
+</script>
+</body>
+</html>
+
+(2) pr 함수 작성   문제 내용: 출력할 문자(str)와 반복 횟수(n)를 매개변수로 받아 해당 문자를 n번 연속 출력하는 pr 함수를 작성   
+풀이 과정:for 문을 사용하여 매개변수 n번만큼 반복하며 document.write(str)를 실행합니다.
+
+정답 코드:
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>2</title>
+</head>
+<body>
+<script>
+function pr(str, n) {
+    for (let i = 0; i < n; i++) {
+        document.write(str);
+    }
+}
+</script>
+<script>
+    pr("%", 5);
+</script>
+</body>
+</html>
