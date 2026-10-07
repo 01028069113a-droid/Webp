@@ -1,0 +1,27 @@
+5. 정확한 암호가 입력될 때까지 계속 prompt()를 출력하여 암호를 입력받는 웹 페이지를 작성하라. 암호는 you이다. you가 입력되면 오른쪽과 같이 출력된다.
+
+풀이 과정:while 문이나 do-while 문을 사용하여 암호가 "you"가 될 때까지 무한 반복하며 prompt() 창을 띄웁니다.   
+입력받은 문자열이 "you"와 일치하면 반복문을 빠져나와(break) 화면에 통과!를 출력합니다.   
+
+정답 코드:
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>do-while과 break</title>
+</head>
+<body>
+<h3>암호를 입력하라!</h3>
+<hr>
+<script>
+    let password = "";
+    while (true) {
+        password = prompt("암호를 대라", "");
+        if (password === "you") {
+            break;
+        }
+    }
+    document.write("통과!");
+</script>
+</body>
+</html>
