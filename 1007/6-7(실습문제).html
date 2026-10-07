@@ -1,0 +1,41 @@
+7. prompt() 함수로 사용자로부터 숫자를 입력받고 제일 큰 자리 수와 제일 낮은 자리의 수가 같으면 '성공' (또는 출력 화면 예시의 '같음'), 아니면 '다름'을 출력하는 웹 페이지를 작성하라. 문자열 연산으로 풀지 말고 while을 이용하여 제일 큰 자리의 수와 낮은 자리의 수를 구하여 풀도록 하라.
+
+풀이 과정
+1. 가장 낮은 자리의 수(일의 자리): 입력받은 수 n을 10으로 나눈 나머지(n % 10)로 쉽게 구합니다.
+2. 가장 큰 자리의 수(최상위 자리): while 문을 통해 n이 10 이상인 동안 계속 10으로 나누면서(Math.floor(n / 10)), 10 미만이 되었을 때의 값을 추출합니다.   
+3. 두 수를 비교하여 같으면 "성공" (또는 예시 이미지처럼 "같음"), 다르면 "다름"을 출력합니다.  
+
+정답 코드
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>큰 자리수와 낮은자리수 비교</title>
+</head>
+<body>
+<h3>큰 자리수와 낮은자리수 같은지 비교</h3>
+<hr>
+<script>
+    let str = prompt("숫자 입력", "");
+    if (str !== null) {
+        let n = parseInt(str);
+        let strNum = str; // 출력용 원본 저장
+        
+        let last = n % 10; // 가장 낮은 자리의 수
+        let first = n;
+        
+        // 가장 큰 자리의 수 구하기
+        while (first >= 10) {
+            first = Math.floor(first / 10);
+        }
+        
+        if (first === last) {
+            document.write(strNum + ": 성공"); // 예시 화면대로 '같음' 표기를 원하면 "성공" 대신 "같음" 작성
+        } else {
+            document.write(strNum + ": 다름");
+        }
+    }
+</script>
+</body>
+</html>
+
