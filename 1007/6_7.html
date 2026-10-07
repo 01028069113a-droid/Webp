@@ -1,0 +1,33 @@
+7. 다음 문장의 실행 결과 w, x, y, z의 값은 무엇인가?
+
+(1)
+JavaScript
+let x=1, y=2, z=3, w=4;
+y = x++;
+z += x;
+w = (w > 3) ? w-3 : 3-w;
+
+
+풀이 과정
+ 1. y = x++;: 후위 증가 연산자(++)이므로 x의 현재 값 1이 y`에 대입된 후, `x`는 `2`로 증가합니다. (`y = 1`, `x = 2`)
+  2. z += x;`: z = z + x이므로 3 + 2 = 5가 됩니다. (z = 5)
+  3. w = (w > 3) ? w-3 : 3-w;: w는 4이므로 조건식 `(4 > 3)은 true입니다. 따라서 삼항 연산자의 첫 번째 결과인 w - 3 (4 - 3 = 1)이 w에 대입됩니다. (w = 1)
+
+정답: w = 1, x = 2, y = 1, z = 5
+
+(2)
+javascript
+let a=1, b=2, c=3, d=4;
+let x = (a > 1) || (c != 3);
+let y = (a != b) && (c != d);
+let z = b << c;
+let w = (a==1);
+
+
+풀이 과정
+  1. let x = (a > 1) || (c != 3);: `1 > 1 (false), 3 != 3 (false) $\rightarrow$ `false || false` = `false`
+  2. let y = (a != b) && (c != d);: 1 != 2 (true), 3 != 4 (true) $\rightarrow$ true && true = true
+  3. let z = b << c;: 2 << 3 연산은 $2 \times 2^3 = 2 \times 8 = 16$ 입니다. (16)
+  4. let w = (a==1);: 1 == 1이므로 true가 됩니다.
+
+정답: w = true,x = false, y = true, z = 16
