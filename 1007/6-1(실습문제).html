@@ -1,0 +1,84 @@
+1. HTML 페이지와 출력 결과를 보고 물음에서 요구하는 대로 페이지를 수정하라.
+
+[원본 HTML 코드]
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>자바스크립트 코드 위치</title>
+</head>
+<body>
+<h3>마우스를 올려 보세요</h3>
+<hr>
+<div onmouseover="this.style.background='yellow'"
+     onmouseout="this.style.background='white'">
+여기에 마우스를 올리면 배경색이 노란색으로 변합니다.
+</div>
+</body>
+</html>
+```
+
+
+(1) HTML 페이지를 수정하여 자바스크립트 코드를 `<script>` 태그에 삽입하라.
+
+풀이 과정
+ Inline(태그 내) 이벤트 리스너 함수를 정의하기 위해 `<head>` 또는 `<body>` 태그 내에 `<script>` 태그를 추가하고, 마우스 오버/아웃 시 배경색을 변경하는 함수 `over(obj)`와 `out(obj)`를 작성합니다.
+  * `<div>` 태그의 이벤트 속성(`onmouseover`, `onmouseout`)에서 작성한 함수를 호출하도록 수정합니다.
+
+정답 코드:
+```html
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>자바스크립트 코드 위치</title>
+<script>
+function over(obj) {
+    obj.style.background = 'yellow';
+}
+function out(obj) {
+    obj.style.background = 'white';
+}
+</script>
+</head>
+<body>
+<h3>마우스를 올려 보세요</h3>
+<hr>
+<div onmouseover="over(this)" onmouseout="out(this)">
+여기에 마우스를 올리면 배경색이 노란색으로 변합니다.
+</div>
+</body>
+</html>
+
+
+(2) 자바스크립트 코드를 6-1.js 파일에 저장하고 <script> 태그로 6-1.js 파일을 불러오도록 HTML 페이지를 수정하라.
+
+풀이 과정
+
+자바스크립트 함수 정의 부분을 외부 파일 6-1.js로 분리합니다.
+HTML 파일에서는 <script src="6-1.js"></script> 형태로 외부 스크립트 파일을 불러오도록 작성합니다.
+
+정답 코드
+function over(obj) {
+    obj.style.background = 'yellow';
+}
+function out(obj) {
+    obj.style.background = 'white';
+}
+파일 내용:
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>자바스크립트 코드 위치</title>
+<script src="6-1.js"></script>
+</head>
+<body>
+<h3>마우스를 올려 보세요</h3>
+<hr>
+<div onmouseover="over(this)" onmouseout="out(this)">
+여기에 마우스를 올리면 배경색이 노란색으로 변합니다.
+</div>
+</body>
+</html>
+
