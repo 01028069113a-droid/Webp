@@ -1,0 +1,30 @@
+예제 7-6을 수정하여 웹 페이지를 접속할 때 오전이면 배경색을 lightskyblue로, 오후이면 orange로 출력되게 하라.
+
+new Date() 객체를 생성하여 현재 시간을 가져옵니다.   current.getHours()를 이용해 현재 시간을 시간(0~23) 단위로 가져옵니다.
+if문을 사용하여 가져온 시간이 12보다 작으면 오전(lightskyblue), 아니면 오후(orange)로 배경색(document.body.style.backgroundColor)을 지정합니다.
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>방문 시간이 오전 오후...</title>
+</head>
+<body>
+<script>
+    let current = new Date(); // 현재 시간을 가진 Date 객체 생성
+    if (current.getHours() < 12) {
+        document.body.style.backgroundColor = "lightskyblue";
+    } else {
+        document.body.style.backgroundColor = "orange";
+    }
+</script>
+<h3>오전이면 lightskyblue, 오후이면 orange 배경</h3>
+<hr>
+<script>
+    document.write("현재 시간 : ");
+    document.write(current.getHours(), "시,");
+    document.write(current.getMinutes(), "분,");
+    document.write(current.getSeconds(), "초");
+</script>
+</body>
+</html>
