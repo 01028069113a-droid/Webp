@@ -1,0 +1,33 @@
+4번 문제
+문제 내용: 예제 7-6을 수정하여 웹 페이지를 접속할 때 월요일~토요일이면 배경색을 gold로, 일요일이면 pink로 출력되게 하라.
+
+new Date() 객체를 생성합니다.   
+current.getDay()를 이용해 요일을 숫자로 가져옵니다 (자바스크립트에서 일요일은 0, 월요일은 1, ..., 토요일은 6입니다).
+if문을 사용하여 current.getDay() === 0 (일요일)인 경우 배경색을 pink로 설정하고, 그 외(월~토)인 경우 gold로 설정합니다.
+화면에 출력되는 문구와 오늘 날짜 및 요일 출력 부분을 수정합니다.
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>방문 요일에 따라 변하...</title>
+</head>
+<body>
+<script>
+    let current = new Date(); // 현재 시간을 가진 Date 객체 생성
+    if (current.getDay() == 0) {
+        document.body.style.backgroundColor = "pink";
+    } else {
+        document.body.style.backgroundColor = "gold";
+    }
+</script>
+<h3>일요일은 pink, 다른 요일은 gold 배경</h3>
+<hr>
+<script>
+    let days = ["일요일", "월요일", "화요일", "수요일", "목요일", "금요일", "토요일"];
+    document.write("오늘 : ");
+    document.write(current.getDate(), "일,");
+    document.write(days[current.getDay()]);
+</script>
+</body>
+</html>
