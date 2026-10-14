@@ -1,0 +1,15 @@
+5. 주석에 맞게 다음 빈 칸에 자바스크립트 코드로 채워라.
+javascript
+let money = new Array(3);   // Array를 이용하여 크기가 3인 배열 money 생성
+money[0] = 5;      // money의 첫 번째 원소에 5 삽입
+money[1] = 7;      // money의 두 번째 원소에 7 삽입
+money[2] = -3;    // money의 세 번째 원소에 -3 삽입
+
+let sum = 0;
+for(let i=0; i<money.length; i++) sum += money[i]; // 배열 합 구하기
+document.write(sum / money.length); // 평균 출력
+
+빈 칸 정답 요약:
+1. 첫 번째 빈 칸 (`let ____________`): `money = new Array(3)` 또는 `money = [ ];` 등 문맥에 맞게 배열 선언 (`let money = new Array(3);` 전체가 빈칸일 수도 있음)
+2. 반복문 조건 (`i<____________`): `money.length
+3. 출력문 (`document.write(____________);`): `sum / money.length` (또는 `sum/3`)
