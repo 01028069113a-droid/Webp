@@ -1,0 +1,36 @@
+8. 8번 문제
+[문제 내용]
+다음 브라우저 화면과 같이, document.write()를 이용하여 16개의 <div 태그를 출력하고 각 <div 태그에 출력되는 배경색을 랜덤한 색으로 칠하는 웹 페이지를 작성하라. 웹 페이지를 로드할 때마다 색이 랜덤하게 바뀐다
+
+[풀이 과정]
+1. for 반복문을 16번(또는 적절한 횟수) 실행합니다.
+2. Math.random()을 활용하여 0에서 255 사이의 정수 난수 3개(Red, Green, Blue)를 각각 생성합니다 (Math.floor(Math.random() * 256)).  
+ 3. rgb(r, g, b) 문자열 조합을 만들어 배경색(backgroundColor)에 적용합니다.
+4. <div> 태그 안에 해당 rgb(...) 텍스트를 출력하여 화면에 표시합니다.   
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Math.random()으로 랜덤한 색 만들기</title>
+<style>
+    div { display: inline-block; width: 150px; padding: 10px; }
+</style>
+</head>
+<body>
+<h3>16개의 랜덤한 색 만들기</h3>
+<hr>
+<script>
+for(let i=0; i<16; i++) {
+    let r = Math.floor(Math.random() * 256);
+    let g = Math.floor(Math.random() * 256);
+    let b = Math.floor(Math.random() * 256);
+    
+    let colorstring = "rgb(" + r + "," + g + "," + b + ")";
+    
+    let str = "<div style='background-color:" + colorstring + "'>" + colorstring + "</div>";
+    document.write(str);
+}
+</script>
+</body>
+</html>
