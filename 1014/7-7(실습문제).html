@@ -1,0 +1,34 @@
+7. 7번 문제
+[문제 내용]
+다음과 같이 색 이름을 가진 문자열 배열 colorNames를 만들고, 문자열을 <div> 태그로 출력하라. <div 태그의 배경색은 해당 색으로 칠하라.
+
+[풀이 과정]
+1. 제시된 배열 colorNames를 선언합니다.   
+2. for 반복문을 사용하여 배열의 모든 요소를 순회합니다.
+3. 각 요소를 출력할 때 <div> 태그를 생성하고, CSS 스타일을 이용해 display: inline-block, width: 60px, padding: 10px를 지정하여 인라인 블록 박스로 만듭니다.   
+4. backgroundColor 스타일을 배열의 색상 값(colorNames[i])으로 설정하고, 내부에 색상 이름을 텍스트로 출력합니다.
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>17개의 CSS2 색이름과 색</title>
+<style>
+    div { display: inline-block; width: 60px; padding: 10px; }
+</style>
+</head>
+<body>
+<h3>17개의 CSS2 색이름과 색</h3>
+<hr>
+<script>
+let colorNames = ["maroon", "red", "orange", "yellow", "olive", "purple",
+    "fuchsia", "white", "lime", "green", "navy", "blue", "aqua", "teal",
+    "black", "silver", "gray"];
+
+for(let i=0; i<colorNames.length; i++) {
+    let str = "<div style='background-color:" + colorNames[i] + "'>" + colorNames[i] + "</div>";
+    document.write(str);
+}
+</script>
+</body>
+</html>
