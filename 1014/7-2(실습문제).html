@@ -1,0 +1,40 @@
+prompt() 함수를 반복 호출하여 5개의 정수를 입력받아 배열에 저장하고 입력된 반대 순서로 출력하는 웹 페이지를 작성하라.
+
+정수 입력받기: for 반복문을 5번 돌며 prompt() 함수로 정수를 입력받고, 정수형(parseInt 또는 Number)으로 변환하여 배열에 저장합니다.   
+입력된 배열 출력: 입력된 순서대로 배열의 요소를 화면에 출력합니다.   
+역순으로 재정렬 및 출력: 배열의 reverse() 메서드를 사용해 순서를 뒤집은 뒤, 역순으로 출력합니다.
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>정수 5개 입력받아 역순으로 출력</title>
+</head>
+<body>
+<h3>정수 5개 입력받아 역순으로 출력</h3>
+<hr>
+<script>
+let plots = []; // 배열 선언
+
+// 1. prompt()로 정수 5개 입력받아 배열에 저장
+for (let i = 0; i < 5; i++) {
+    let val = prompt("정수 입력");
+    plots[i] = parseInt(val);
+}
+
+// 2. 입력된 수의 배열 출력
+document.write("입력된 수의 배열<br>");
+for (let i = 0; i < 5; i++) {
+    document.write(plots[i] + " ");
+}
+document.write("<hr>");
+
+// 3. 역순으로 재정렬하여 출력
+plots.reverse();
+document.write("역순으로 재정렬된 배열<br>");
+for (let i = 0; i < 5; i++) {
+    document.write(plots[i] + " ");
+}
+</script>
+</body>
+</html>
