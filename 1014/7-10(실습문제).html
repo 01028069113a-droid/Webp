@@ -1,0 +1,57 @@
+10. 10번 문제
+[문제 내용]
+문제 9의 (1)에서 new Object()를 이용하여 생성한 book 객체를 이용하여 book의 객체 배열 bookArray를 생성하고, 다음과 같이 prompt() 함수를 통해 5개 책 정보를 입력받은 후 가장 비싼 책의 이름을 출력하는 웹 페이지를 작성하라.
+
+[풀이 과정]
+1. 크기가 5인 객체 배열 bookArray를 선언합니다.  
+2. for 반복문을 사용하여 prompt()로 "제목,저자,가격" 형태의 문자열을 입력받습니다.  
+3. 입력받은 문자열을 split(",")을 통해 분할한 뒤, new Object()를 생성하여 각각 title, author, price 프로퍼티에 저장하고 배열에 담습니다.   
+4. 반복문을 돌며 입력된 책들을 화면에 출력하고, price 값을 비교하여 가장 비싼 책을 찾아냅니다.  
+5. 가장 비싼 책의 이름을 최종 출력합니다.  
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>book 객체 배열 만들기</title>
+</head>
+<body>
+<h3>book 객체 배열 만들기</h3>
+<hr>
+<script>
+let bookArray = [];
+
+// 1. prompt()를 통해 5개 책 정보 입력받기
+for(let i=0; i<5; i++) {
+    let s = prompt("콤마(,)로 분리하면서 책제목 저자 가격 순으로 입력");
+    let etab = s.split(",");
+    
+    let book = new Object();
+    book.title = etab[0];
+    book.author = etab[1];
+    book.price = parseInt(etab[2]);
+    
+    bookArray[i] = book;
+}
+
+// 2. 입력된 책 정보 출력하기
+for(let i=0; i<bookArray.length; i++) {
+    document.write(bookArray[i].title + ", ");
+    document.write(bookArray[i].author + ", ");
+    document.write(bookArray[i].price + "<br>");
+}
+
+document.write("<hr>");
+
+// 3. 가장 가격이 비싼 책 찾기
+let most = bookArray[0];
+for(let i=1; i<bookArray.length; i++) {
+    if(bookArray[i].price > most.price) {
+        most = bookArray[i];
+    }
+}
+
+document.write("가장 가격이 비싼 책은 " + most.title);
+</script>
+</body>
+</html>
