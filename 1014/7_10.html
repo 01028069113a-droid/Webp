@@ -32,3 +32,7 @@ box.fill();
 document.write(box.amount);
 box.consume();
 document.write(box.amount);
+
+풀이 과정:두 번째 사진 10번 문제에서 box 객체의 초기 amount 값은 0으로 설정되어 있습니다.   
+fill() 메서드가 실행되면 this.amount += 2가 되어 amount는 2가 됩니다. 따라서 첫 번째 document.write(box.amount)는 2를 출력합니다.   
+이어서 consume() 메서드가 실행되면 this.amount -= 2가 되어 amount는 다시 0(2 - 2)이 됩니다. 따라서 두 번째 document.write(box.amount)는 0을 출력합니다.   
