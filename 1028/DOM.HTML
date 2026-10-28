@@ -1,0 +1,20 @@
+DOM 객체 동적 생성: document.createElement("태그이름")
+ 태그이름의 DOM 객체 생성
+ 예)
+ DOM 트리에 삽입
+ 부모.appendChild(DOM객체);
+ 부모.insertBefore(DOM객체 [, 기준자식]);
+ 예) 생성한 <div> 태그를 <p "id=p"> 태그의 마지막 자식으로 추가
+ DOM 객체의 삭제
+ let removedObj = 부모.removeChild(떼어내고자하는자식객체);
+ 예)
+30
+let newDIV = document.createElement("div");
+newDIV.innerHTML = "새로 생성된 DIV입니다.";
+newDIV.setAttribute("id", "myDiv");
+newDIV.style.backgroundColor = "yellow";
+let p = document.getElementById("p");
+p.appendChild(newDiv);
+let myDiv = document.getElementById("myDiv");
+let parent = myDiv.parentElement;
+parent.removeChild(myDiv); // 부모에서 myDiv 객체 삭제
