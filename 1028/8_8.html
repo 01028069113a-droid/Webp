@@ -1,0 +1,17 @@
+8. 다음 웹 페이지를 로드하면 경고창이 출력되는가? 답에 대한 이유를 설명하라.
+
+<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8"><title>자바스크립트 테스트</title>
+<script>
+    let elem = document.getElementById("myBody");
+    if(elem == null)
+        alert("body is not made yet");
+</script>
+</head>
+<body id="myBody">
+    <p id="first">hello</p>
+</body>
+</html>
+
+정답: 네, 경고창(body is not made yet)이 출력됩니다.
