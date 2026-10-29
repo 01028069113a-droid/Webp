@@ -1,0 +1,30 @@
+문제 6
+
+DOM 객체의 innerHTML 프로퍼티를 다루는 연습을 해보자. 다음과 같이 <p></p> 태그로 출력된 텍스트에 마우스로 클릭하면, prompt() 창을 출력하고 사용자가 입력한 HTML 텍스트로 <p> 태그의 내용을 바꾸는 웹 페지를 작성하라.
+
+정답:
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>innerHTML 프로퍼티</title>
+<script>
+    function changeText(obj) {
+        // prompt 창을 띄워 사용자로부터 텍스트(HTML 태그 포함 가능)를 입력받음
+        let text = prompt("HTML 텍스트 혹은 그냥 텍스트를 입력하세요", obj.innerHTML);
+        
+        // 사용자가 취소를 누르지 않았을 경우에만 내용을 변경
+        if(text != null) {
+            obj.innerHTML = text;
+        }
+    }
+</script>
+</head>
+<body>
+<h3>innerHTML</h3>
+<hr>
+<!-- p 태그를 클릭했을 때 함수를 실행하며 자기 자신(this)을 전달 -->
+<p onclick="changeText(this)">이번 여름에는 어디로 여행을 갈까요?</p>
+</body>
+</html>
