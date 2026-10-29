@@ -1,0 +1,75 @@
+문제 5
+다음 HTML 페이지를 출력하면 동일한 크기의 카드 4개가 겹쳐 있어, 맨 위에 배치된 카드만 보인다(예제 5-6 참고). 
+이것은 각 카드 이미지의 z-index 스타일 프로퍼티 값을 다르게 설정하여 값이 클수록 위에 배치되도록 하였기 때문이다. 
+카드 이미지를 클릭하면 클릭된 카드가 맨 밑으로 들어가고 바로 밑의 카드가 나타나도록, 자바스크립트 코드를 작성하라.
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"><title>z-index 스타일 프로퍼티</title>
+<style>
+div { position : absolute; }
+img { position : absolute; }
+</style>
+</head>
+<body>
+<h3>z-index 스타일 프로퍼티</h3>
+<hr>
+<div>
+    <img src="media/spade-A.png" width="100" height="140" alt="스페이드A">
+    <img src="media/spade-2.png" width="100" height="140" alt="스페이드2">
+    <img src="media/spade-3.png" width="100" height="140" alt="스페이드3">
+    <img src="media/spade-7.png" width="100" height="140" alt="스페이드7">
+</div>
+
+정답:
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>z-index 스타일 프로퍼티</title>
+<style>
+div { position : absolute; }
+img { position : absolute; }
+</style>
+<script>
+    let imgArray;
+    
+    // 페이지 로딩 완료 후 실행
+    window.onload = function() {
+        let div = document.getElementsByTagName("div")[0];
+        imgArray = div.getElementsByTagName("img");
+        
+        // 이미지들에 초기 스타일 및 이벤트 리스너 등록
+        for(let i = 0; i < imgArray.length; i++) {
+            imgArray[i].style.zIndex = i; // 0부터 1씩 증가시키며 지정
+            imgArray[i].style.left = "0px";
+            imgArray[i].style.top = "0px";
+            imgArray[i].onclick = changeZIndex; // 클릭 이벤트 등록
+        }
+    };
+
+    // 카드를 클릭했을 때 실행되는 이벤트 리스너 함수
+    function changeZIndex() {
+        // 클릭된 카드의 z-index를 0(맨 아래)으로 보내고, 나머지 카드들의 z-index를 1씩 증가시킴
+        for(let i = 0; i < imgArray.length; i++) {
+            if(imgArray[i] == this) {
+                imgArray[i].style.zIndex = 0;
+            } else {
+                imgArray[i].style.zIndex = Number(imgArray[i].style.zIndex) + 1;
+            }
+        }
+    }
+</script>
+</head>
+<body>
+<h3>z-index 스타일 프로퍼티</h3>
+<hr>
+<div>
+    <img src="media/spade-A.png" width="100" height="140" alt="스페이드A">[cite: 10]
+    <img src="media/spade-2.png" width="100" height="140" alt="스페이드2">[cite: 10]
+    <img src="media/spade-3.png" width="100" height="140" alt="스페이드3">[cite: 10]
+    <img src="media/spade-7.png" width="100" height="140" alt="스페이드7">[cite: 10]
+</div>
+</body>
+</html>
