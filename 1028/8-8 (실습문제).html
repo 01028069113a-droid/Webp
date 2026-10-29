@@ -1,0 +1,26 @@
+문제 8
+이미지를 클릭할 때마다 옆으로 2, 3, 4배로 확대하여 출력하는 웹 페이지를 작성하라.
+
+정답:
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>transform scale()</title>
+<script>
+    let scaleX = 1;
+    function scaleImg(obj) {
+        scaleX++;
+        if(scaleX > 4) {
+            scaleX = 2; // 4배 이후 다시 반복하거나 유지하도록 설정
+        }
+        obj.style.transform = "scale(" + scaleX + ", 1)";
+    }
+</script>
+</head>
+<body>
+<h3>클릭할 때마다 2, 3, 4배로 옆으로 늘어납니다.</h3>
+<hr>
+<img src="media/spongebob.png" width="150" height="150" alt="스폰지밥" onclick="scaleImg(this);">
+</body>
+</html>
