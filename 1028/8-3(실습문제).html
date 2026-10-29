@@ -1,0 +1,39 @@
+실습문제 3
+다음은 예제 5-7을 수정하여 출력한 결과이다. 예제에 버튼(show/hide)을 추가하고 자바스크립트 코드를 삽입하여 버튼을 클릭하면 답이 보이게 하고, 다시 클릭하면 숨기도록 구현하였다. 웹 페이지를 작성하라.
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>visibility 프로퍼티</title>
+<script>
+    function showHide() {
+        let spans = document.getElementsByTagName("span");
+        for(let i=0; i<spans.length; i++) {
+            let span = spans[i];
+            if(span.style.visibility == "hidden" || span.style.visibility == "")
+                span.style.visibility = "visible";
+            else
+                span.style.visibility = "hidden";
+        }
+    }
+</script>
+</head>
+<body>
+<h3>다음 빈 곳에 숨은 단어? <button onclick="showHide()">show/hide</button></h3>
+<hr>
+<ul>
+    <li>I ( <span>love</span> ) you.</li>
+    <li>CSS is Cascading ( <span>Style</span> ) Sheet.</li>
+    <li>응답하라 ( <span>1988</span> ).</li>
+</ul>
+</body>
+</html>
+
+버튼 생성 및 이벤트 연결:
+<h3> 태그 안에 <button onclick="showHide()">show/hide</button>를 추가하여 버튼을 클릭했을 때 showHide() 함수가 호출되도록 설정합니다.
+
+<span> 태그 탐색:
+문서 내의 모든 빈칸 글씨가 <span> 태그로 감싸져 있으므로, document.getElementsByTagName("span")을 이용해 모든 <span> 요소들을 배열(HTMLCollection) 형태로 가져옵니다.
+
+visibility 토글 기능 구현:
+반복문을 통해 각 <span> 요소의 style.visibility 속성을 확인합니다.   현재 숨겨져 있거나("hidden" 또는 빈 상태 "") 보이지 않는 상태라면 "visible"로 바꾸어 글자가 보이게 하고, 반대로 보이는 상태라면 "hidden"으로 바꾸어 숨기도록 토글(toggle) 로직을 작성합니다.   
