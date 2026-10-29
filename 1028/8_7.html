@@ -1,0 +1,23 @@
+7. 다음 웹 페이지에 대해 물음에 답하라
+
+1 <!DOCTYPE html>
+2 <html>
+3 <head><meta charset="utf-8"><title>라면을 끓이는 순서</title></head>
+4 <body>
+5 <h3>라면을 끓이는 순서</h3>
+6 <hr>
+7 <ol type="A">
+8     <li>물을 끓인다.</li>
+9     <li onclick="alert(this.innerHTML)"><span>라면</span>과 스프를 넣는다.</li>
+10    <li>5분 후 먹는다.</li>
+11 </ol>
+12 </body>
+13 </html>
+
+(1) 라인 9의 <li> 태그에 의해 생성된 DOM 객체의 innerHTML 프로퍼티 값은 무엇인가? (웹 페이지를 출력하고 라인 9를 클릭하면 확인해 볼 수 있다.)  
+
+정답: <span>라면</span>과 스프를 넣는다.
+
+(2) 라인 7을 <ol type="A" onclick="alert(this.innerHTML)">로 수정하여 웹 페이지를 출력하고 라인 8이나 10의 위치에 클릭하면 무엇이 출력되는가?
+  
+정답: <ol> 태그 전체의 내용(즉, 자식 요소인 모든 <li> 태그 내용 전체)이 출력됩니다.
