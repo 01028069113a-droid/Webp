@@ -1,0 +1,37 @@
+2. 라디오버튼으로 선택하면 해당 이미지를 출력하는 웹 페이지를 작성하라.
+
+
+정답:
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>라디오 버튼과 이미지 출력</title>
+<script>
+function changeImage() {
+    let found = null;
+    let k = document.getElementsByName("fruit");
+    for(let i = 0; i < k.length; i++) {
+        if(k[i].checked == true) {
+            found = k[i];
+            break;
+        }
+    }
+    let img = document.getElementById("fruitimg");
+    img.src = found.value;
+}
+</script>
+</head>
+<body onload="changeImage()">
+<h3>라디오 버튼을 클릭하면 이미지를 출력합니다.</h3>
+<hr>
+<form>
+    <input type="radio" name="fruit" value="media/banana.png" onchange="changeImage()">바나나
+    <input type="radio" name="fruit" value="media/mango.png" onchange="changeImage()">망고
+    <input type="radio" name="fruit" value="media/apple.png" onchange="changeImage()" checked>사과
+</form>
+<br>
+<img id="fruitimg" src="media/apple.png" alt="과일 이미지">
+</body>
+</html>
