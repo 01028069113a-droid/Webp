@@ -1,0 +1,15 @@
+2. 다음과 같은 자바스크립트 코드가 있을 때, 버튼을 클릭하면 실행 결과는 무엇인가?
+
+
+let button = document.getElementById("button");
+button.addEventListener("click", function () { alert("ONE") });
+button.addEventListener("click", function () { alert("TWO") });
+button.addEventListener("click", function () { alert("THREE") });
+
+
+① ONE 문자열을 가진 경고창이 출력된다.
+② THREE 문자열을 가진 경고창이 출력된다.
+③ ONE, TWO, THREE 문자열을 가진 3개의 경고창이 순서대로 출력된다.
+④ THREE, TWO, ONE 문자열을 가진 3개의 경고창이 순서대로 출력된다.
+
+정답: 3
