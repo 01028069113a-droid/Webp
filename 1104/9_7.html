@@ -1,0 +1,6 @@
+7. 다음 자바스크립트 코드가 실행되면 웹 페이지에 작성된 어떤 onclick 리스너도 실행되지 못한다. 이유를 설명하라.
+
+window.addEventListener("click", function(e) { e.stopPropagation(); }, true);
+
+이유: *이유:window 객체에 캡처 단계(true)로 등록된 이벤트 리스너가 마우스 클릭 이벤트(click)를 가장 먼저 가로채어 
+e.stopPropagation() 메서드를 호출하기 때문입니다.
