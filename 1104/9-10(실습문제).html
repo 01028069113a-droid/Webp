@@ -1,0 +1,92 @@
+10번 문제
+문제 내용: 다음 브라우저 화면과 같은 모양의 계산기 웹 페이지를 작성하라. 입력 창에는 초기에 0이 출력된다. 
+숫자와 연산자 버튼을 눌러 계산식을 만들고 = 버튼을 클릭하면 계산 결과를 출력한다. BACK 버튼을 누르면 입력창의 마지막 문자를 지운다. 
+CE나 C 버튼은 같은 기능으로, 입력 창의 내용을 모두 지우고 처음처럼 0이 출력되게 한다. NONE 버튼은 아무 기능이 없다.
+
+
+정답:
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>계산기 만들기</title>
+<style>
+input[type="button"] {
+    width: 55px;
+    height: 35px;
+    margin: 2px;
+}
+input[type="text"] {
+    width: 236px;
+    height: 30px;
+    text-align: right;
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+</style>
+<script>
+function input(val) {
+    let screen = document.getElementById("screen");
+    if(screen.value == "0") {
+        screen.value = val;
+    } else {
+        screen.value += val;
+    }
+}
+
+function compute() {
+    let screen = document.getElementById("screen");
+    try {
+        screen.value = eval(screen.value);
+    } catch(e) {
+        screen.value = "오류";
+    }
+}
+
+function clearScreen() {
+    document.getElementById("screen").value = "0";
+}
+
+function backspace() {
+    let screen = document.getElementById("screen");
+    if(screen.value.length > 1) {
+        screen.value = screen.value.substring(0, screen.value.length - 1);
+    } else {
+        screen.value = "0";
+    }
+}
+</script>
+</head>
+<body>
+<h3>계산기 만들기</h3>
+<hr>
+<form>
+    <input type="text" id="screen" value="0" readonly><br>
+    <input type="button" value="BACK" onclick="backspace()">
+    <input type="button" value="CE" onclick="clearScreen()">
+    <input type="button" value="C" onclick="clearScreen()">
+    <input type="button" value="=" onclick="compute()"><br>
+    
+    <input type="button" value="7" onclick="input('7')">
+    <input type="button" value="8" onclick="input('8')">
+    <input type="button" value="9" onclick="input('9')">
+    <input type="button" value="/" onclick="input('/')"><br>
+    
+    <input type="button" value="4" onclick="input('4')">
+    <input type="button" value="5" onclick="input('5')">
+    <input type="button" value="6" onclick="input('6')">
+    <input type="button" value="*" onclick="input('*')"><br>
+    
+    <input type="button" value="1" onclick="input('1')">
+    <input type="button" value="2" onclick="input('2')">
+    <input type="button" value="3" onclick="input('3')">
+    <input type="button" value="-" onclick="input('-')"><br>
+    
+    <input type="button" value="0" onclick="input('0')">
+    <input type="button" value="+" onclick="input('+')">
+    <input type="button" value="NONE">
+    <input type="button" value="NONE">
+</form>
+</body>
+</html>
