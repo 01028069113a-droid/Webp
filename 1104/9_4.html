@@ -1,0 +1,34 @@
+4. 다음 함수와 태그가 있을 때 물음에 답하여라.
+javascript
+function f() { // obj 객체의 배경색을 orchid로 변경하는 함수
+    obj.style.backgroundColor = "orchid";
+}
+
+html
+<div id="div1">안녕하세요. 환영합니다.</div>
+
+
+(1) id가 "div1"인 DOM 객체를 알아내는 코드를 작성하라.
+`let obj =` ________________________________________ `;
+
+정답: `document.getElementById("div1")`
+
+
+(2) <div> 태그를 클릭하면 f() 함수가 실행되도록 addEventListener()를 이용하여 이벤트 리스너를 등록하라.
+
+문제 빈칸: obj.________________________________________;
+
+정답: obj.addEventListener("click", f);
+
+
+(3) <div> 태그를 클릭하면 f() 함수가 실행되도록 onclick 프로퍼티를 이용하여 이벤트 리스너를 등록하라.
+
+문제 빈칸: obj.________________________________________;
+
+정답: obj.onclick = f;
+
+(4) f()를 익명 함수로 작성하여 onclick 리스너로 등록하라. onclick 프로퍼티를 이용하라.
+
+문제 빈칸: obj.________________________________________;
+
+정답: onclick = function() { obj.style.backgroundColor = "orchid"; }
