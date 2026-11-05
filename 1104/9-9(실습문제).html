@@ -1,0 +1,55 @@
+9. 리스트를 만들고 아이템 영역 안에 마우스를 들어오면 다음과 같이 자세한 설명을 출력하는 웹 페이지를 작성하라.
+
+정답:
+
+html
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>onmouseover와 onmouseout</title>
+<style>
+
+#divDesc {
+    position: absolute;
+    background: yellow;
+    border: 1px solid black;
+    padding: 5px;
+    visibility: hidden;
+}
+</style>
+<script>
+let descArray = [
+    "빨간 자전거를 타고 서울, 대전, 대구, 부산 찍고, 목포, 인천을 거쳐 달린다",
+    "소설, 인문, 과학, 경제 등 다양한 분야의 책을 읽고 독후감을 쓴다",
+    "수영 1.5km, 사이클 40km, 마라톤 10km를 완주하기 위해 매일 훈련한다",
+    "자바스크립트 기본 문법을 마치고 웹 어플리케이션을 직접 개발한다"
+];
+
+function showDesc(e, index) {
+    let div = document.getElementById("divDesc");
+    div.innerHTML = descArray[index];
+    div.style.left = e.clientX + 10 + "px";
+    div.style.top = e.clientY + 10 + "px";
+    div.style.visibility = "visible";
+}
+
+function hideDesc() {
+    let div = document.getElementById("divDesc");
+    div.style.visibility = "hidden";
+}
+</script>
+</head>
+<body>
+<h3>아이템에 마우스를 올리면 설명 출력</h3>
+<hr>
+<p>여름 방학 때 하고 싶은 것들</p>
+<ul>
+    <li onmousemove="showDesc(event, 0)" onmouseout="hideDesc()">자전거로 대한민국 일주</li>
+    <li onmousemove="showDesc(event, 1)" onmouseout="hideDesc()">책 100권 읽기</li>
+    <li onmousemove="showDesc(event, 2)" onmouseout="hideDesc()">철인 3종 경기 준비</li>
+    <li onmousemove="showDesc(event, 3)" onmouseout="hideDesc()">자바스크립트 정복</li>
+</ul>
+<div id="divDesc"></div>
+</body>
+</html>
