@@ -1,0 +1,172 @@
+7. 수식을 출력하고 사용자로부터 답을 받아 채점하는 웹 페이지만들고자 한다.
+
+(1) 다음과 같이 정해진 수식을 주고 사용자가 입력 창에 입력하고 채점 버튼을 클릭하면 맞은 개수를 출력한다. 답이 틀리면 문제 위에 줄을 긋는다. 수식은 웹 페이지 내에 HTML 태그로 작성한 수식이다.
+
+정답:
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>산수를 풀어 봅시다</title>
+    <script>
+        function calc() {
+            let questions = document.getElementsByClassName("question");
+            let inputs = document.getElementsByClassName("answer");
+            let score = 0;
+
+            for (let i = 0; i < questions.length; i++) {
+                let qText = questions[i].innerHTML; // 예: "5*6"
+                let userAns = inputs[i].value;
+                let evalAns = eval(qText); // 문자열 수식 계산 (5*6 -> 30)
+
+                // 기존 줄 긋기 스타일 초기화
+                questions[i].style.textDecoration = "none";
+
+                if (userAns == evalAns) {
+                    score++;
+                } else {
+                    // 틀린 경우 문제 위에 줄 긋기
+                    questions[i].style.textDecoration = "line-through";
+                }
+            }
+            document.getElementById("score").innerHTML = score;
+        }
+    </script>
+</head>
+<body>
+    <h3>산수 문제를 풀어 봅시다.</h3>
+    <p>수식을 계산하여 답을 입력하고 채점 버튼을 누르세요.</p>
+    <hr>
+    <table>
+        <tr>
+            <td><span class="question">5*6</span></td>
+            <td><input type="text" class="answer" size="10"></td>
+        </tr>
+        <tr>
+            <td><span class="question">7+5*3</span></td>
+            <td><input type="text" class="answer" size="10"></td>
+        </tr>
+        <tr>
+            <td><span class="question">23*2</span></td>
+            <td><input type="text" class="answer" size="10"></td>
+        </tr>
+        <tr>
+            <td><span class="question">35-7</span></td>
+            <td><input type="text" class="answer" size="10"></td>
+        </tr>
+        <tr>
+            <td><button type="button" onclick="calc()">채점</button></td>
+            <td><span id="score">0</span></td>
+        </tr>
+    </table>
+</body>
+</html>
+
+
+(2) 문제 (1)을 보완하여 처음부터 사칙 연산 문제를 랜덤하게 생성하고, 다시 버튼을 누를 때마다 문제가 만들어지도록 웹 페이를 작성하라.
+
+정답 코드:
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>산수를 풀어 봅시다</title>
+    <script>
+        let isEvaluated = false; // 채점 완료 여부 체크
+
+        // 페이지가 로드될 때 자동으로 문제 생성
+        window.onload = function() {
+            makeQuestion();
+        }
+
+        // 랜덤 사칙연산 문제 생성 함수
+        function makeQuestion() {
+            let questions = document.getElementsByClassName("question");
+            let inputs = document.getElementsByClassName("answer");
+            let operators = ["+", "-", "*", "/"];
+
+            for (let i = 0; i < questions.length; i++) {
+                let op1 = Math.floor(Math.random() * 99) + 1; // 1 ~ 99 사이의 난수
+                let op2 = Math.floor(Math.random() * 99) + 1;
+                let op = operators[Math.floor(Math.random() * operators.length)];
+
+                // 나누기일 경우 나누어 떨어지거나 정수 결과가 되도록 간단 조절 가능하나 기본 형태 유지
+                questions[i].innerHTML = op1 + op + op2;
+                questions[i].style.textDecoration = "none"; // 줄 긋기 초기화
+                inputs[i].value = ""; // 입력창 초기화
+            }
+            document.getElementById("score").innerHTML = "0";
+            isEvaluated = false;
+        }
+
+        // 채점 함수
+        function calc() {
+            if(isEvaluated) return; // 중복 채점 방지 (선택 사항)
+            
+            let questions = document.getElementsByClassName("question");
+            let inputs = document.getElementsByClassName("answer");
+            let score = 0;
+
+            for (let i = 0; i < questions.length; i++) {
+                let qText = questions[i].innerHTML;
+                let userAns = inputs[i].value;
+                let evalAns;
+
+                // 나눗셈의 경우 문제 조건에 따라 정수 연산 처리 (Math.floor 등)
+                if (qText.indexOf('/') > -1) {
+                    let parts = qText.split('/');
+                    evalAns = Math.floor(parseInt(parts[0]) / parseInt(parts[1]));
+                } else {
+                    evalAns = eval(qText);
+                }
+
+                questions[i].style.textDecoration = "none";
+
+                if (userAns !== "" && parseInt(userAns) === evalAns) {
+                    score++;
+                } else {
+                    questions[i].style.textDecoration = "line-through";
+                }
+            }
+            document.getElementById("score").innerHTML = score;
+            isEvaluated = true;
+        }
+    </script>
+</head>
+<body>
+    <h3>산수 문제를 풀어 봅시다.</h3>
+    <p>자동으로 문제가 만들어집니다. 답 입력 후 채점 버튼을 누르세요. 다시 버튼을 누르면 새로운 문제가 출력됩니다. 나누기 결과는 정수입니다.
+    </p>
+    <hr>
+    <table>
+        <tr>
+            <td><span class="question"></span></td>
+            <td><input type="text" class="answer" size="10"></td>
+        </tr>
+        <tr>
+            <td><span class="question"></span></td>
+            <td><input type="text" class="answer" size="10"></td>
+        </tr>
+        <tr>
+            <td><span class="question"></span></td>
+            <td><input type="text" class="answer" size="10"></td>
+        </tr>
+        <tr>
+            <td><span class="question"></span></td>
+            <td><input type="text" class="answer" size="10"></td>
+        </tr>
+        <tr>
+            <td>
+                <button type="button" onclick="calc()">채점</button>
+                <button type="button" onclick="makeQuestion()">다시</button>
+            </td>
+            <td><span id="score">0</span></td>
+        </tr>
+    </table>
+</body>
+</html>
+
+
+<FollowUp label="자바스크립트의 난수 생성(Math.random)이나 eval() 함수 활용법에 대해 더 자세히 알아볼까요?
+  " query="자바스크립트에서 Math.random()을 활용해 다양한 범위의 난수를 생성하는 방법과 주의할 점을 설명해 줘."/>
