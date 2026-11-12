@@ -1,0 +1,113 @@
+8. 문제 7을 수정해보자. 10초의 시간이 지나면 자동으로 채점하도록 웹 페이지를 작성한다. 다시 버튼을 누르면 새 문제가 주어진다.
+
+정답:
+
+HTML
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>산수를 풀어 봅시다</title>
+    <script>
+        let timerId = null;
+        let count = 10;
+
+        window.onload = function() {
+            makeQuestion();
+        }
+
+        function makeQuestion() {
+            let questions = document.getElementsByClassName("question");
+            let inputs = document.getElementsByClassName("answer");
+            let operators = ["+", "-", "*", "/"];
+
+            for (let i = 0; i < questions.length; i++) {
+                let op1 = Math.floor(Math.random() * 99) + 1;
+                let op2 = Math.floor(Math.random() * 99) + 1;
+                let op = operators[Math.floor(Math.random() * operators.length)];
+
+                questions[i].innerHTML = op1 + op + op2;
+                questions[i].style.textDecoration = "none";
+                inputs[i].value = "";
+            }
+            document.getElementById("score").innerHTML = "0";
+
+            // 타이머 초기화 및 시작
+            if(timerId) clearInterval(timerId);
+            count = 10;
+            document.getElementById("timer").innerHTML = count;
+            timerId = setInterval(countdown, 1000);
+        }
+
+        function countdown() {
+            count--;
+            document.getElementById("timer").innerHTML = count;
+            if (count === 0) {
+                clearInterval(timerId);
+                calc(); // 10초가 지나면 자동 채점
+            }
+        }
+
+        function calc() {
+            if(timerId) clearInterval(timerId); // 수동 채점 시 타이머 중지
+
+            let questions = document.getElementsByClassName("question");
+            let inputs = document.getElementsByClassName("answer");
+            let score = 0;
+
+            for (let i = 0; i < questions.length; i++) {
+                let qText = questions[i].innerHTML;
+                let userAns = inputs[i].value;
+                let evalAns;
+
+                if (qText.indexOf('/') > -1) {
+                    let parts = qText.split('/');
+                    evalAns = Math.floor(parseInt(parts[0]) / parseInt(parts[1]));
+                } else {
+                    evalAns = eval(qText);
+                }
+
+                questions[i].style.textDecoration = "none";
+
+                if (userAns !== "" && parseInt(userAns) === evalAns) {
+                    score++;
+                } else {
+                    questions[i].style.textDecoration = "line-through";
+                }
+            }
+            document.getElementById("score").innerHTML = score;
+        }
+    </script>
+</head>
+<body>
+    <h3>산수 문제를 풀어 봅시다.</h3>
+    <p>문 문제는 자동으로 생성되며, 10초가 지나면 자동 채점됩니다.<br>
+    남은 시간 <span id="timer" style="color:red; font-weight:bold;">10</span></p>
+    <hr>
+    <table>
+        <tr>
+            <td><span class="question"></span></td>
+            <td><input type="text" class="answer" size="10"></td>
+        </tr>
+        <tr>
+            <td><span class="question"></span></td>
+            <td><input type="text" class="answer" size="10"></td>
+        </tr>
+        <tr>
+            <td><span class="question"></span></td>
+            <td><input type="text" class="answer" size="10"></td>
+        </tr>
+        <tr>
+            <td><span class="question"></span></td>
+            <td><input type="text" class="answer" size="10"></td>
+        </tr>
+        <tr>
+            <td>
+                <button type="button" onclick="calc()">채점</button>
+                <button type="button" onclick="makeQuestion()">다시</button>
+            </td>
+            <td><span id="score">0</span></td>
+        </tr>
+    </table>
+</body>
+</html>
