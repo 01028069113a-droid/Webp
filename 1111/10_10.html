@@ -1,0 +1,16 @@
+10. 문제 9에서 주어진 코드를 setTimeout()/clearTimeout()을 이용하여 다시 작성하라.
+
+정답:
+
+let sum = 0;
+let id = setTimeout(f, 2); // 또는 setTimeout("f()", 2);
+
+function f() {
+    sum++;
+    if (sum == 10) {
+        clearTimeout(id);
+    } else {
+        id = setTimeout(f, 2); // 10번이 될 때까지 다음 타이머를 재귀적으로 예약
+    }
+}
+
