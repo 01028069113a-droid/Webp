@@ -1,0 +1,27 @@
+4. 웹 페이지를 로드하자마자 크롬 브라우저인지를 판단하여 다음과 같이 alert()로 출력하는 웹 페이지를 작성하라.
+
+정답:
+
+HTML
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>구글 Chrome 브라우저 감별</title>
+    <script>
+        function checkChrome() {
+            let isChrome = navigator.userAgent.indexOf("Chrome") > -1 && 
+                           navigator.vendor.indexOf("Google Inc.") > -1;
+            if (isChrome) {
+                alert("구글 Chrome 브라우저입니다.");
+            } else {
+                alert("구글 Chrome 브라우저가 아닙니다.");
+            }
+        }
+    </script>
+</head>
+<body onload="checkChrome()">
+    <h3>구글 Chrome 브라우저 감별</h3>
+    <p>웹 브라우저에 따라 지원되는 자바스크립트를 다를 수도 있습니다...</p>
+</body>
+</html>
